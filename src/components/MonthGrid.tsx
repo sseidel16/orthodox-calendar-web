@@ -58,11 +58,11 @@ function SplitCell({ cell }: { cell: SplitBox }) {
     return (
         <div className="cell split-cell">
             <div className={`split-half ${cell.top.background === 'FASTING' ? 'fasting' : ''}`}>
-                <DateContent box={cell.top} compact />
+                <DateContent box={cell.top} />
             </div>
             <div className="split-divider" />
             <div className={`split-half ${cell.bottom.background === 'FASTING' ? 'fasting' : ''}`}>
-                <DateContent box={cell.bottom} compact />
+                <DateContent box={cell.bottom} />
             </div>
         </div>
     );
@@ -79,7 +79,7 @@ function DateCell({ cell }: { cell: DateBox }) {
     );
 }
 
-function DateContent({ box, compact }: { box: DateBox; compact?: boolean }) {
+function DateContent({ box }: { box: DateBox }) {
     return (
         <div className="date-layout">
             <div className="date-sidebar">
@@ -98,19 +98,19 @@ function DateContent({ box, compact }: { box: DateBox; compact?: boolean }) {
                     {box.mainText.feast && (
                         <div className="feast">
                             <div className="en">{box.mainText.feast[0]}</div>
-                            {!compact && <div className="gr">{box.mainText.feast[1]}</div>}
+                            <div className="gr">{box.mainText.feast[1]}</div>
                         </div>
                     )}
                     {box.mainText.saint && (
                         <div className="saint">
                             <div className="en">{box.mainText.saint[0]}</div>
-                            {!compact && <div className="gr">{box.mainText.saint[1]}</div>}
+                            <div className="gr">{box.mainText.saint[1]}</div>
                         </div>
                     )}
                     {box.mainText.note && (
                         <div className="main-note">
                             <div className="en">{box.mainText.note[0]}</div>
-                            {!compact && <div className="gr">{box.mainText.note[1]}</div>}
+                            <div className="gr">{box.mainText.note[1]}</div>
                         </div>
                     )}
                 </div>

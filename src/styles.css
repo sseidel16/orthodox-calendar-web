@@ -212,8 +212,8 @@ body {
 }
 
 .split-divider {
-    height: 1.5px;
-    background: #5c3317;
+    height: 1px;
+    background: #ccc;
     flex-shrink: 0;
 }
 
@@ -249,8 +249,8 @@ body {
 }
 
 .note-ref {
-    font-size: 0.7rem;
-    color: #c41e3a;
+    font-size: 0.9rem;
+    color: #6a0dad;
     font-weight: bold;
     margin-top: 1px;
 }
