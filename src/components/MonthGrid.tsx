@@ -132,28 +132,19 @@ function DateContent({ box, compact }: { box: DateBox; compact?: boolean }) {
 }
 
 function MoonIcon({ phase }: { phase: string }) {
-    const size = 9;
-    const r = size / 2 - 1;
-    const cx = size / 2;
-    const cy = size / 2;
     switch (phase) {
-        case 'NEW':
-            return <svg width={size} height={size}><circle cx={cx} cy={cy} r={r} fill="#333"/></svg>;
-        case 'FULL':
-            return <svg width={size} height={size}><circle cx={cx} cy={cy} r={r} fill="none" stroke="#333" strokeWidth="1"/></svg>;
-        case 'FIRST':
-            return <svg width={size} height={size}><circle cx={cx} cy={cy} r={r} fill="none" stroke="#333" strokeWidth="0.7"/><path d={`M${cx},${cy-r} A${r},${r} 0 0,1 ${cx},${cy+r} L${cx},${cy-r}`} fill="#333"/></svg>;
-        case 'LAST':
-            return <svg width={size} height={size}><circle cx={cx} cy={cy} r={r} fill="none" stroke="#333" strokeWidth="0.7"/><path d={`M${cx},${cy-r} A${r},${r} 0 0,0 ${cx},${cy+r} L${cx},${cy-r}`} fill="#333"/></svg>;
-        default:
-            return null;
+        case 'NEW': return <span className="moon-emoji">🌑</span>;
+        case 'FIRST': return <span className="moon-emoji">🌓</span>;
+        case 'FULL': return <span className="moon-emoji">🌕</span>;
+        case 'LAST': return <span className="moon-emoji">🌗</span>;
+        default: return null;
     }
 }
 
 function FastingIcon({ fasting }: { fasting: string }) {
     switch (fasting) {
         case 'OIL':
-            return <span className="fasting-emoji">🫒</span>;
+            return <span className="fasting-emoji">🍷</span>;
         case 'FISH':
             return <span className="fasting-emoji">🐟</span>;
         case 'DAIRY':
