@@ -1,0 +1,349 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background: #f5f0e8;
+    color: #2c1810;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 1.2rem;
+}
+
+.calendar-app {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.year-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.year-nav select {
+    font-size: 1.8rem;
+    font-family: 'Georgia', serif;
+    padding: 8px 16px;
+    cursor: pointer;
+    background: #5c3317;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+/* Month */
+.month {
+    margin-bottom: 50px;
+    border: 2px solid #5c3317;
+    background: white;
+}
+
+.month-title {
+    background: #5c3317;
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.month-en {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.month-gr {
+    font-size: 1.4rem;
+    font-style: italic;
+}
+
+/* Grid */
+.grid {
+    width: 100%;
+}
+
+.grid-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: #f0e6d6;
+    border-bottom: 2px solid #5c3317;
+}
+
+.header-cell {
+    padding: 6px 4px;
+    text-align: center;
+    font-size: 0.7rem;
+    border-right: 1px solid #ccc;
+}
+
+.header-cell:last-child {
+    border-right: none;
+}
+
+.header-en {
+    display: block;
+    font-weight: bold;
+}
+
+.header-gr {
+    display: block;
+    font-style: italic;
+    font-size: 0.6rem;
+    color: #555;
+}
+
+.grid-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-bottom: 1px solid #ccc;
+}
+
+.grid-row:last-child {
+    border-bottom: none;
+}
+
+/* Cells */
+.cell {
+    min-height: 150px;
+    border-right: 1px solid #ccc;
+    font-size: 0.6rem;
+    line-height: 1.3;
+    overflow: hidden;
+}
+
+.cell:last-child {
+    border-right: none;
+}
+
+.cell.empty {
+    background: #faf7f2;
+}
+
+.cell.fasting {
+    background: #f0e8df;
+}
+
+/* Note cell */
+.note-cell {
+    background: #faf7f2;
+    display: flex;
+    color: #6a0dad;
+}
+
+.note-sidebar {
+    width: 22px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3px 2px;
+}
+
+.note-indicator {
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.note-content {
+    flex: 1;
+    padding: 4px;
+}
+
+.note-en {
+    font-size: 0.58rem;
+    line-height: 1.3;
+    margin-bottom: 3px;
+}
+
+.note-gr {
+    font-size: 0.55rem;
+    font-style: italic;
+    line-height: 1.2;
+}
+
+/* Split cell */
+.split-cell {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.split-half {
+    flex: 1;
+    overflow: hidden;
+    font-size: 0.5rem;
+}
+
+.split-half .date-layout {
+    height: 100%;
+}
+
+.split-half .new-date {
+    font-size: 0.8rem;
+}
+
+.split-half .old-date {
+    font-size: 0.55rem;
+}
+
+.split-half .feast .en,
+.split-half .saint .en {
+    font-size: 0.5rem;
+}
+
+.split-half .readings {
+    font-size: 0.45rem;
+}
+
+.split-half .tone {
+    font-size: 0.48rem;
+}
+
+.split-divider {
+    height: 1.5px;
+    background: #5c3317;
+    flex-shrink: 0;
+}
+
+/* Date layout: sidebar + content */
+.date-layout {
+    display: flex;
+    height: 100%;
+}
+
+.date-sidebar {
+    width: 22px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3px 2px;
+}
+
+.new-date {
+    font-size: 1.1rem;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.old-date {
+    font-size: 0.6rem;
+    color: #666;
+    line-height: 1.2;
+}
+
+.feast-date {
+    color: #c41e3a;
+}
+
+.note-ref {
+    font-size: 0.7rem;
+    color: #c41e3a;
+    font-weight: bold;
+    margin-top: 1px;
+}
+
+.sidebar-spacer {
+    flex: 1;
+}
+
+.moon {
+    margin-bottom: 2px;
+}
+
+.fasting-icon {
+    margin-bottom: 1px;
+}
+
+.fasting-emoji {
+    font-size: 0.55rem;
+}
+
+/* Date content (right side) */
+.date-content {
+    flex: 1;
+    padding: 3px 4px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.date-body {
+    flex: 1;
+}
+
+.feast {
+    margin-bottom: 2px;
+}
+
+.feast .en {
+    font-weight: bold;
+    color: #8b0000;
+    font-size: 0.62rem;
+}
+
+.feast .gr {
+    font-style: italic;
+    color: #8b0000;
+    font-size: 0.55rem;
+}
+
+.saint .en {
+    font-size: 0.58rem;
+    white-space: pre-line;
+}
+
+.saint .gr {
+    font-style: italic;
+    color: #555;
+    font-size: 0.52rem;
+    white-space: pre-line;
+}
+
+.main-note .en {
+    font-size: 0.58rem;
+    font-style: italic;
+    color: #6a0dad;
+}
+
+.main-note .gr {
+    font-style: italic;
+    color: #6a0dad;
+    font-size: 0.52rem;
+}
+
+/* Lower text */
+.date-footer {
+    margin-top: auto;
+    padding-top: 2px;
+}
+
+.tone {
+    font-size: 0.58rem;
+    font-style: italic;
+    color: #8b0000;
+    margin-bottom: 1px;
+}
+
+.readings {
+    font-size: 0.52rem;
+    color: #444;
+}
+
+.reading {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
