@@ -296,12 +296,14 @@ body {
     font-weight: bold;
     color: #8b0000;
     font-size: 0.62rem;
+    white-space: pre-line;
 }
 
 .feast .gr {
     font-style: italic;
     color: #8b0000;
     font-size: 0.55rem;
+    white-space: pre-line;
 }
 
 .saint .en {
