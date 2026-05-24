@@ -201,12 +201,14 @@ body {
     font-size: 0.58rem;
     line-height: 1.3;
     margin-bottom: 3px;
+    white-space: pre-line;
 }
 
 .note-gr {
     font-size: 0.55rem;
     font-style: italic;
     line-height: 1.2;
+    white-space: pre-line;
 }
 
 /* Split cell */
@@ -358,12 +360,14 @@ body {
     font-size: 0.58rem;
     font-style: italic;
     color: #6a0dad;
+    white-space: pre-line;
 }
 
 .main-note .gr {
     font-style: italic;
     color: #6a0dad;
     font-size: 0.52rem;
+    white-space: pre-line;
 }
 
 /* Lower text */

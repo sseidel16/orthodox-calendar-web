@@ -10,6 +10,7 @@ declare global {
             generateCalendarYear: (year: number, options?: any) => CalendarData;
             GREGORIAN: any;
             JULIAN: any;
+            PROPORTIONAL: (char: string) => number;
         };
     }
 }
@@ -18,7 +19,7 @@ type PrimaryCalendar = 'new' | 'old';
 
 function App() {
     const [data, setData] = useState<CalendarData | null>(null);
-    const [year, setYear] = useState(2026);
+    const [year, setYear] = useState(2027);
     const [primary, setPrimary] = useState<PrimaryCalendar>('new');
     const [loading, setLoading] = useState(true);
 
@@ -27,9 +28,11 @@ function App() {
         const generate = () => {
             const lib = window.OrthodoxCalendarData;
             if (lib) {
-                const options = primary === 'new'
-                    ? { calendar: lib.GREGORIAN, secondaryCalendar: lib.JULIAN }
-                    : { calendar: lib.JULIAN, secondaryCalendar: lib.GREGORIAN };
+                const options = {
+                    calendar: primary === 'new' ? lib.GREGORIAN : lib.JULIAN,
+                    secondaryCalendar: primary === 'new' ? lib.JULIAN : lib.GREGORIAN,
+                    readingsLayout: { maxLines: 3, maxLineWidth: 33, charWidth: lib.PROPORTIONAL },
+                };
                 setData(lib.generateCalendarYear(year, options));
                 setLoading(false);
             }
