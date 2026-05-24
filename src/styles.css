@@ -389,7 +389,5 @@ body {
 }
 
 .reading {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    word-wrap: break-word;
 }
