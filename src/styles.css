@@ -29,24 +29,26 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 30px;
+    background: #5c3317;
+    padding: 12px 20px;
+    border: 2px solid #5c3317;
 }
 
 .year-nav select {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-family: 'Georgia', serif;
-    padding: 8px 16px;
+    padding: 2px 12px;
     cursor: pointer;
     background: #5c3317;
     color: white;
-    border: none;
-    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.3);
+    letter-spacing: 2px;
 }
 
 .calendar-toggle {
     display: flex;
     margin-left: 20px;
-    border: 1px solid #5c3317;
-    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.3);
     overflow: hidden;
 }
 
@@ -56,18 +58,19 @@ body {
     padding: 8px 16px;
     cursor: pointer;
     border: none;
-    background: white;
-    color: #5c3317;
+    background: transparent;
+    color: rgba(255,255,255,0.6);
     transition: background 0.2s, color 0.2s;
 }
 
 .toggle-btn.active {
-    background: #5c3317;
+    background: rgba(255,255,255,0.15);
     color: white;
 }
 
 .toggle-btn:not(.active):hover {
-    background: #f0e6d6;
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.9);
 }
 
 /* Month */
@@ -88,13 +91,14 @@ body {
 
 .month-en {
     font-size: 1.6rem;
-    text-transform: uppercase;
+    font-style: italic;
     letter-spacing: 2px;
 }
 
 .month-gr {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-style: italic;
+    letter-spacing: 2px;
 }
 
 /* Grid */
