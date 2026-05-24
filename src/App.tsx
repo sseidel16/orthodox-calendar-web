@@ -7,14 +7,19 @@ const AVAILABLE_YEARS = Array.from({ length: 41 }, (_, i) => 2005 + i); // 2005-
 declare global {
     interface Window {
         OrthodoxCalendarData: {
-            getYearCalendar: (year: number, options?: any) => CalendarData;
+            generateCalendarYear: (year: number, options?: any) => CalendarData;
+            GREGORIAN: any;
+            JULIAN: any;
         };
     }
 }
 
+type PrimaryCalendar = 'new' | 'old';
+
 function App() {
     const [data, setData] = useState<CalendarData | null>(null);
     const [year, setYear] = useState(2026);
+    const [primary, setPrimary] = useState<PrimaryCalendar>('new');
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -22,7 +27,10 @@ function App() {
         const generate = () => {
             const lib = window.OrthodoxCalendarData;
             if (lib) {
-                setData(lib.getYearCalendar(year));
+                const options = primary === 'new'
+                    ? { calendar: lib.GREGORIAN, secondaryCalendar: lib.JULIAN }
+                    : { calendar: lib.JULIAN, secondaryCalendar: lib.GREGORIAN };
+                setData(lib.generateCalendarYear(year, options));
                 setLoading(false);
             }
         };
@@ -31,7 +39,7 @@ function App() {
         } else {
             document.addEventListener('lib-loaded', generate, { once: true });
         }
-    }, [year]);
+    }, [year, primary]);
 
     if (loading || !data) return <div className="loading">Generating {year} calendar...</div>;
 
@@ -43,6 +51,20 @@ function App() {
                         <option key={y} value={y}>{y}</option>
                     ))}
                 </select>
+                <div className="calendar-toggle">
+                    <button
+                        className={`toggle-btn ${primary === 'new' ? 'active' : ''}`}
+                        onClick={() => setPrimary('new')}
+                    >
+                        New Calendar
+                    </button>
+                    <button
+                        className={`toggle-btn ${primary === 'old' ? 'active' : ''}`}
+                        onClick={() => setPrimary('old')}
+                    >
+                        Old Calendar
+                    </button>
+                </div>
             </div>
             <div className="months">
                 {data.months.map((month, i) => (
