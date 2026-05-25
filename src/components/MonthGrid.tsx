@@ -83,8 +83,8 @@ function DateContent({ box }: { box: DateBox }) {
     return (
         <div className="date-layout">
             <div className="date-sidebar">
-                <div className={`new-date ${box.newFeast ? 'feast-date' : ''}`}>{box.newDate}</div>
-                <div className={`old-date ${box.oldFeast ? 'feast-date' : ''}`}>{box.oldDate}</div>
+                <div className={`new-date ${box.isFeast ? 'feast-date' : ''}`}>{box.date}</div>
+                <div className={`old-date ${box.isSecondaryFeast ? 'feast-date' : ''}`}>{box.secondaryDate}</div>
                 {box.note && <div className="note-ref">{box.note}</div>}
                 <div className="sidebar-spacer" />
                 {box.moon !== 'NONE' && <div className="moon"><MoonIcon phase={box.moon} /></div>}

@@ -30,14 +30,14 @@ export type SplitBox = {
 
 export type DateBox = {
     type: 'DATE';
-    newDate: number;
-    oldDate: number;
+    date: number;
+    secondaryDate: number;
     background: 'STANDARD' | 'FASTING';
     moon: 'NONE' | 'NEW' | 'FIRST' | 'FULL' | 'LAST';
     fasting: 'NONE' | 'DAIRY' | 'FISH' | 'OIL' | 'STRICT';
     note?: string;
-    newFeast: boolean;
-    oldFeast: boolean;
+    isFeast: boolean;
+    isSecondaryFeast: boolean;
     mainText: {
         feast?: string[];
         saint?: string[];
