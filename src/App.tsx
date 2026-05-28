@@ -1,19 +1,9 @@
 import { useEffect, useState } from 'react';
-import type { CalendarData } from './types';
+import { generateCalendarYear, GREGORIAN, JULIAN, PROPORTIONAL } from '@orthodox-tools/calendar-data';
+import type { CalendarData } from '@orthodox-tools/calendar-data';
 import { MonthGrid } from './components/MonthGrid';
 
 const AVAILABLE_YEARS = Array.from({ length: 41 }, (_, i) => 2005 + i); // 2005-2045
-
-declare global {
-    interface Window {
-        OrthodoxCalendarData: {
-            generateCalendarYear: (year: number, options?: any) => CalendarData;
-            GREGORIAN: any;
-            JULIAN: any;
-            PROPORTIONAL: (char: string) => number;
-        };
-    }
-}
 
 type PrimaryCalendar = 'new' | 'old';
 
@@ -25,23 +15,13 @@ function App() {
 
     useEffect(() => {
         setLoading(true);
-        const generate = () => {
-            const lib = window.OrthodoxCalendarData;
-            if (lib) {
-                const options = {
-                    calendar: primary === 'new' ? lib.GREGORIAN : lib.JULIAN,
-                    secondaryCalendar: primary === 'new' ? lib.JULIAN : lib.GREGORIAN,
-                    readingsLayout: { maxLines: 3, maxLineWidth: 33, charWidth: lib.PROPORTIONAL },
-                };
-                setData(lib.generateCalendarYear(year, options));
-                setLoading(false);
-            }
+        const options = {
+            calendar: primary === 'new' ? GREGORIAN : JULIAN,
+            secondaryCalendar: primary === 'new' ? JULIAN : GREGORIAN,
+            readingsLayout: { maxLines: 3, maxLineWidth: 33, charWidth: PROPORTIONAL },
         };
-        if (window.OrthodoxCalendarData) {
-            generate();
-        } else {
-            document.addEventListener('lib-loaded', generate, { once: true });
-        }
+        setData(generateCalendarYear(year, options));
+        setLoading(false);
     }, [year, primary]);
 
     if (loading || !data) return <div className="loading">Generating {year} calendar...</div>;

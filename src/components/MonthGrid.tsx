@@ -1,4 +1,4 @@
-import type { MonthData, BoxData, DateBox, SplitBox, NoteBox } from '../types';
+import type { MonthData, BoxData, DateBox, SplitBox, NoteBox } from '@orthodox-tools/calendar-data';
 
 const DAY_HEADERS_EN = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const DAY_HEADERS_GR = ['Κυριακή', 'Δευτέρα', 'Τρίτη', 'Τετάρτη', 'Πέμπτη', 'Παρασκευή', 'Σάββατο'];
